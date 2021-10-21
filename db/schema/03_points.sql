@@ -11,5 +11,5 @@ CREATE TABLE points (
   address VARCHAR(255) NOT NULL,
   latitude DECIMAL NOT NULL,
   longitude DECIMAL NOT NULL
-)
+);
 
