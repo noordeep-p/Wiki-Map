@@ -1,20 +1,14 @@
 <header>
-  <!-- <img src="../../styles/images/logo.svg" alt="logo"> -->
   <nav>
-    <a class="navbar-brand" href="/views/maps_index">Wiki-Map</a>
-    <ul class="nav_links">
-      <% if(user) { %>
-        <li><a href="/views/maps_favourites.ejs">My Favorites</a></li>
-        <li><a href="/views/maps_create.ejs">My Maps</a></li>
-        <li><a href="/views/maps_create.ejs">Create New Map</a></li>
-        <li><a class="display-username">Hi <%= user.name %>!</a></li>
-        <form class="logout-button" method="POST" action="/logout">
-          <button type="submit">Logout</button>
-        </form>
-        <% } else { %>
-          <li><a href="/views/login.ejs">Login</a></li>
-          <li><a href="/views/register.ejs">Register</a></li>
-          <% } %>
+    <ul class="nav__wrapper">
+      <li class="nav__item"><a href="#">WikiMaps</a></li>
+      <li class="nav__item"><a href="#">My Maps</a></li>
+      <li class="nav__item"><a href="#">My Favorites</a></li>
+      <li class="nav__item"><a href="#">Create New Map</a></li>
+      <li class="nav__item"><span>Logged In As: Username</span></li>
+      <form class="logout" method="POST" action="/logout">
+        <button type="submit" class="nav__item">Logout</button>
+      </form>
     </ul>
   </nav>
 </header>
