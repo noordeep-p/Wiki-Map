@@ -92,6 +92,28 @@ module.exports = (db) => {
   });
 
 
+  // Create a new user
+  router.post('/register', (req, res) => {
+    const { name, email, password } = req.body;
+    getUserByEmail(email)
+    .then(data => {
+      if (data) { //if user exists
+        res.send("User already exists")
+        return;
+      }
+      const newUser = {
+        name, email, password
+      }
+      addUser(newUser)
+      .then(user => {
+        console.log('add in user', user);
+        res.send('New user created!');
+      })
+      .catch(e => res.send(e));
+    })
+    return;
+
+  });
 
   return router;
 };

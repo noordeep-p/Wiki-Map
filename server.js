@@ -58,7 +58,11 @@ app.use("/maps", mapsRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("login", {user: ""}); // switch to "register" to get login form
+  res.render("login", { user: "" }); // switch to "register" to get login form
+});
+
+app.get("/register", (req, res) => {
+  res.render("register", { user: "" });
 });
 
 // if you post to the register form you'll see the req data console logged insert it into
