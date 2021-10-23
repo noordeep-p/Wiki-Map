@@ -1,14 +1,19 @@
 <header>
-  <nav>
-    <ul class="nav__wrapper">
-      <li class="nav__item"><a href="#">WikiMaps</a></li>
-      <li class="nav__item"><a href="#">My Maps</a></li>
-      <li class="nav__item"><a href="#">My Favorites</a></li>
-      <li class="nav__item"><a href="#">Create New Map</a></li>
-      <li class="nav__item"><span>Logged In As: Username</span></li>
+  <nav class="nav__wrapper">
+    <ul>
+      <li><a href="#">WikiMaps</a></li>
+      <% if(user) { %>
+      <li><a href="#">My Maps</a></li>
+      <li><a href="#">My Favorites</a></li>
+      <li><a href="#">Create New Map</a></li>
+      <li><span>Logged In As: <%= user.name %>!</span></li>
       <form class="logout" method="POST" action="/logout">
-        <button type="submit" class="nav__item">Logout</button>
+        <button type="submit">Logout</button>
       </form>
+      <% } else { %>
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Register</a></li>
+     <% } %>
     </ul>
   </nav>
 </header>
