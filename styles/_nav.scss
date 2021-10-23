@@ -1,25 +1,15 @@
-header nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgb(109, 195, 109);
-  font-family: Source-Sans-Pro, Sans-Serif;
-  z-index: 1;
-  position:fixed;
-  top: 0;
-  width: 100%;
-  height: 6em;
-  outline: white solid 2px;
-};
-
 .nav__wrapper {
-  display: flex;
-  flex-direction: unset;
-  height: 4em;
-}
 
-.nav__item {
-  display: flex;
-  margin: 1em;
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      li, form {
+        padding: 0;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+    }
+
 }
