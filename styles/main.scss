@@ -1,7 +1,9 @@
-@import 'login';
+@import 'forms';
 @import 'nav';
 @import 'layout';
 
 body {
   display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
 }
