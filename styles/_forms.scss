@@ -4,20 +4,22 @@ input[type=text], input[type=password] {
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
-  border-radius: 25px;
+  border-radius: 15px;
   box-sizing: border-box;
   font-family: 'Nunito', sans serif;
 }
 
 button {
-  background-color: #36a87f;
+  background-color: #56b391;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
-  border-radius: 25px;
+  border-radius: 10px;
   cursor: pointer;
   width: 100%;
+  font-size: inherit;
+
 }
 
 button:hover {
@@ -25,7 +27,7 @@ button:hover {
 }
 
 .container {
-  padding: 16px;
+  padding: 25px;
 }
 
 .register {
@@ -42,5 +44,5 @@ span.link {
 
 form {
   border:1px solid #ccc;
-  border-radius: 25px;
+  border-radius: 20px;
 }
