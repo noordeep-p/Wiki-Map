@@ -77,8 +77,10 @@ module.exports = (db) => {
   // handle root directory server request
   router.get("/", (req, res) => {
     let user = req.session.user;
-    console.log(user);
-    return res.render("maps_index", user);
+    if (user) {
+      return res.render("maps_index", user);
+    }
+    return res.render("maps_index", { user: null });
   });
 
   // login user
