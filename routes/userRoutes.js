@@ -74,46 +74,59 @@ module.exports = (db) => {
    * ALL EXPRESS SERVER USER ROUTES
    */
 
-  // Login user
+  // handle root directory server request
+  router.get("/", (req, res) => {
+    let user = req.session.user;
+    console.log(user);
+    return res.render("maps_index", user);
+  });
+
+  // login user
   router.route("/login")
     .get((req, res) => {
-      return res.render("login", { user: "" });
+      return res.render("login", { user: null });
     })
     .post((req, res) => {
       login(req.body.email, req.body.password)
-        .then(data => {
-          console.log(data);
-          return res.sendStatus(200);
+        .then(user => {
+          if (user) {
+            req.session.user = { user };
+            return res.render("maps_index", { user });
+          }
+          return res.sendStatus(400);
         })
         .catch(e => console.log(e));
     });
 
 
-  // Create a new user
+  // logout user
+  router.post("/logout", (req, res) => {
+    req.session = null;
+    res.render("maps_index", { user: req.session });
+  });
+
+  // create a new user
   router.route('/register')
     .get((req, res) => {
-      res.render("register", { user: "" });
+      res.render("register",{ user: null });
     })
     .post((req, res) => {
       const { name, email, password } = req.body;
       getUserByEmail(email)
-        .then(data => {
-          if (data) { //if user exists
-            res.send("User already exists");
-            return;
+        .then(user => {
+          if (user) { //if user exists
+            return res.send("User already exists");
           }
-          const newUser = {
-            name, email, password
-          };
+          const newUser = { name, email, password };
           addUser(newUser)
             .then(user => {
-              console.log('add in user', user);
-              res.send('New user created!');
+              if (user) {
+                return res.send('New user created! Please <a href="/login">login</a>');
+              }
             })
             .catch(e => res.send(e));
         });
       return;
-
     });
 
   return router;
