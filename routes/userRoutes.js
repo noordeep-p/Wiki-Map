@@ -71,49 +71,50 @@ module.exports = (db) => {
 
 
   /**
-   * Below are all your routes that start with /user + the route
-   * so the first route represents /user/login
+   * ALL EXPRESS SERVER USER ROUTES
    */
 
-
-
-
-  // if you go to the login page and enter a password the info is submitted to this
-  // route and if the user exist you'll see a console log of the user object if not
-  // you'll see null
-
-  router.post("/login", (req, res) => {
-    login(req.body.email, req.body.password)
-      .then(data => {
-        console.log(data);
-        res.sendStatus(200);
-      })
-      .catch(e => console.log(e));
-  });
+  // Login user
+  router.route("/login")
+    .get((req, res) => {
+      return res.render("login", { user: "" });
+    })
+    .post((req, res) => {
+      login(req.body.email, req.body.password)
+        .then(data => {
+          console.log(data);
+          return res.sendStatus(200);
+        })
+        .catch(e => console.log(e));
+    });
 
 
   // Create a new user
-  router.post('/register', (req, res) => {
-    const { name, email, password } = req.body;
-    getUserByEmail(email)
-      .then(data => {
-        if (data) { //if user exists
-          res.send("User already exists");
-          return;
-        }
-        const newUser = {
-          name, email, password
-        };
-        addUser(newUser)
-          .then(user => {
-            console.log('add in user', user);
-            res.send('New user created!');
-          })
-          .catch(e => res.send(e));
-      });
-    return;
+  router.route('/register')
+    .get((req, res) => {
+      res.render("register", { user: "" });
+    })
+    .post((req, res) => {
+      const { name, email, password } = req.body;
+      getUserByEmail(email)
+        .then(data => {
+          if (data) { //if user exists
+            res.send("User already exists");
+            return;
+          }
+          const newUser = {
+            name, email, password
+          };
+          addUser(newUser)
+            .then(user => {
+              console.log('add in user', user);
+              res.send('New user created!');
+            })
+            .catch(e => res.send(e));
+        });
+      return;
 
-  });
+    });
 
   return router;
 };
