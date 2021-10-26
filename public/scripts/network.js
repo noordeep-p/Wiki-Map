@@ -9,6 +9,6 @@ const getAllMaps = () => {
 
 const getMyDetails = () => {
   return $.ajax({
-    url: "/api/me"
+    url: "/api/currentUser"
   });
 };

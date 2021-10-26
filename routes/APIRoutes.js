@@ -24,7 +24,7 @@ module.exports = (db) => {
    * ALL EXPRESS SERVER API ROUTES
    */
 
-  router.get("/me", (req, res) => {
+  router.get("/currentUser", (req, res) => {
     const user = req.session.user;
     if (!user) {
       return res.send({user: null});
