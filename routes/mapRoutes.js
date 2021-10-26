@@ -25,6 +25,14 @@ module.exports = (db) => {
    * ALL EXPRESS SERVER USER ROUTES
    */
 
+  router.get("/create", (req, res) => {
+    let user = req.session.user;
+    if (user) {
+      return res.render("maps_create", { user });
+    }
+    return res.render("maps_create", { user: null });
+  });
+
   router.get("/", (req, res) => {
     let user = req.session.user;
     if (user) {
@@ -32,6 +40,6 @@ module.exports = (db) => {
     }
     return res.render("maps_index", { user: null });
   });
-  
+
   return router;
 };
