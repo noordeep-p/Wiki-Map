@@ -34,8 +34,8 @@ $(() => {
           <li>PLACEHOLDER FOR ADDING MAP POINT TITLE</li>
         </ul>
         <footer class="map-listing__footer">
-        ${userData.user ? `<button button id="edit-map-${mapData.id}" class="edit-button">Edit</button>
-          <button button id="favorite-map-${mapData.id}" class="favorite-button">Favorite</button>` : ``}
+        ${userData.user ? `<button id="edit-map-${mapData.id}" class="edit-button">Edit</button>
+          <button id="favorite-map-${mapData.id}" class="favorite-button">Favorite</button>` : ``}
         </footer>
       </section>
     </article>
