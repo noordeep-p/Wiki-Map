@@ -43,10 +43,12 @@ app.use(express.static("public"));
 // All resource routes for app
 const usersRoutes = require("./routes/userRoutes");
 const mapsRoutes = require("./routes/mapRoutes");
+const APIRoutes = require("./routes/APIRoutes");
 
 // All resource routes mounted here
 app.use("/", usersRoutes(db));
 app.use("/maps", mapsRoutes(db));
+app.use("/api", APIRoutes(db));
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
