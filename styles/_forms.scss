@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Nunito:wght@400&family=Poppins&display=swap");
+
 input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 20px;
@@ -6,7 +8,6 @@ input[type=text], input[type=password] {
   border: 1px solid #ccc;
   border-radius: 15px;
   box-sizing: border-box;
-  font-family: 'Nunito', sans serif;
 }
 
 button {
