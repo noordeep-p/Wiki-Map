@@ -1,19 +1,6 @@
 /* eslint-disable no-undef */
 
-// Client facing scripts here
-
-// All ajax requests (separate into network.js file later)
-const getAllMaps = () => {
-  return $.ajax({
-    url: "/api/maps"
-  });
-};
-
-const getMyDetails = () => {
-  return $.ajax({
-    url: "/api/me"
-  });
-};
+// Frontend JS for maps index
 
 $(() => {
   // Make ajax request for maps data and use a promise chain to async pass data to CreateMapListing
