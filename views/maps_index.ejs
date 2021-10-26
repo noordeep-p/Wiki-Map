@@ -6,10 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+  <!-- All Page CSS -->
   <link href="/styles/main.css" rel="stylesheet" type="text/css" />
-
-  <!-- custom google font -->
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&family=Nunito:wght@300&display=swap" rel="stylesheet"/>
+
+  <!-- All Frontend JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="/scripts/app.js"></script>
 
   <title>Register</title>
 </head>
@@ -17,23 +20,7 @@
 <body>
   <%- include('partials/_header') %>
     <main>
-      <section class="map_listings">
-        <article>
-          <header>
-            <div class="map-image">
-                <img src='[imgurl]'' id="user-avatar" alt="user-name"></div>
-            </div>
-            <div class="map-title">
-              [insert map description]
-            </div>
-          </header>
-          <footer>
-            <div class="map-description">
-              [insert description]
-            </div>
-          </footer>
-        </article>
-      </section>
+      <section class="map-listings"></section>
     </main>
 </body>
 
