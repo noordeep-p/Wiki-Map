@@ -9,7 +9,10 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  // below are all db querying functions use them inside your routes
+  /**
+   * ALL DATABASE QUERYING FUNCTIONS
+   */
+
   /**
    * Check if a user exists with a given username and password
    * @param {String} email
@@ -68,8 +71,6 @@ module.exports = (db) => {
       .catch(e => console.log(e));
   };
 
-
-
   /**
    * ALL EXPRESS SERVER USER ROUTES
    */
@@ -116,7 +117,7 @@ module.exports = (db) => {
       const { name, email, password } = req.body;
       getUserByEmail(email)
         .then(user => {
-          if (user) { //if user exists
+          if (user) {
             return res.send("User already exists");
           }
           const newUser = { name, email, password };
