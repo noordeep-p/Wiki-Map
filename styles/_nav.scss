@@ -1,10 +1,24 @@
+// color variables
+$button-color: #56b391;
+$text-color1: #fffff0;
+$text-color2: black;
+$primary-color: rgb(139, 128, 240);
+$primary-color2: rgb(170, 161, 245);
+$bg-color: rgb(166, 192, 240);
+
+// font variables
+$logo-font: "Poppins", sans-serif;
+
 .nav__main {
   display: flex;
   flex-wrap: inherit;
   justify-content: center;
-  background-color: rgb(139, 128, 240);
+  background-color: $primary-color;
+  background-image: url("https://www.transparenttextures.com/patterns/cream-dust.png");
   font-size: x-large;
+  color: $text-color1;
   padding: 1rem 3rem 1rem 3rem;
+  border-radius: 15px;
 }
 
 .nav__wrapper {
