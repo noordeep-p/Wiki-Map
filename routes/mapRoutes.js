@@ -22,7 +22,7 @@ module.exports = (db) => {
 
 
   /**
-   * ALL EXPRESS SERVER USER ROUTES
+   * ALL EXPRESS SERVER MAP ROUTES
    */
 
   router.get("/create", (req, res) => {
