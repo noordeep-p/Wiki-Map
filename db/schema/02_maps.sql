@@ -1,4 +1,4 @@
--- Drop and recreate maps table
+-- CREATE MAPS TABLE
 
 CREATE TABLE maps (
   id SERIAL PRIMARY KEY NOT NULL,

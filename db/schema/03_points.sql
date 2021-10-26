@@ -1,4 +1,4 @@
--- Drop and recreate points table
+-- CREATE MAP POINTS TABLE
 
 CREATE TABLE points (
   id SERIAL PRIMARY KEY NOT NULL,
