@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/styles/main.css" rel="stylesheet" type="text/css" />
 
-  <link href="/styles/main.css" rel="stylesheet" type="text/css" />
 
-  <!-- custom google font -->
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&family=Nunito:wght@300&display=swap" rel="stylesheet"/>
+    <title>Login</title>
+  </head>
 
-  <title>Login</title>
-</head>
+  <body>
 
-<body>
-  <%- include('partials/_header') %>
-  <main>
-    <form action="/login" method="post">
-      <div class="container">
-
-        <h1>Login</h1>
-
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required>
-
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-
-        <hr>
-        <p>Don't have an account? <a href="/register">Sign Up</a></p>
-
-        <div class="clearfix">
-          <button type="submit" class="signupbtn">Login</button>
-        </div>
+    <nav>
+      <div class="nav__left">
+        <span id="logo">Mapsy</span>
       </div>
-    </form>
-  </main>
+    </nav>
 
-</body>
+    <%- include('partials/_header') %>
+    <main>
+      <form action="/login" method="post">
+        <div class="container">
+          <h1>Login</h1>
 
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" required />
+
+          <label for="password"><b>Password</b></label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="password"
+            required
+          />
+
+          <hr />
+          <p>Don't have an account? <a href="/register">Sign Up</a></p>
+
+          <div class="clearfix">
+            <button type="submit" class="signupbtn">
+              <strong>Login</strong>
+            </button>
+          </div>
+        </div>
+      </form>
+    </main>
+  </body>
 </html>
