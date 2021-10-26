@@ -9,19 +9,29 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
+
+  /**
+   * ALL DATABASE QUERYING FUNCTIONS
+   */
+
+
+
+
+
+
+
+
+  /**
+   * ALL EXPRESS SERVER USER ROUTES
+   */
+
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM maps`;
-    console.log(query);
-    db.query(query)
-      .then(data => {
-        const maps = data.rows;
-        res.json({ maps });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+    let user = req.session.user;
+    if (user) {
+      return res.render("maps_index", { user });
+    }
+    return res.render("maps_index", { user: null });
   });
+  
   return router;
 };
