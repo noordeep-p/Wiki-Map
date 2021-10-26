@@ -1,27 +1,32 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Nunito:wght@400&family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Poppins:wght@400&family=Poppins&display=swap");
+
+
 input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 1px solid #aaa1f5;
   border-radius: 15px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: 'Nunito', sans serif;
 }
 
 button {
   background-color: #56b391;
-  color: white;
+  color: #FFFFF0;
   padding: 14px 20px;
-  margin: 8px 0;
   border: none;
-  border-radius: 10px;
+  border-radius: 20px;
   cursor: pointer;
-  width: 100%;
   font-size: inherit;
+  font-family: "Poppins", sans-serif;
 }
+/* figure out how to target the favorite button for styling
+#button .favorite-button{
+  background-color: rgb(235, 102, 157);
+ } */
+
 
 button:hover {
   opacity: 0.8;
@@ -50,8 +55,27 @@ span.link {
 }
 
 form {
-  border: 1px solid #ccc;
+  border: 1px solid;
   border-radius: 20px;
+  background-color: #a6c0f0;
+  color: #FFFFF0;
+}
+
+.nav__main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: inherit;
+      flex-wrap: inherit;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #8b80f0;
+  background-image: url("https://www.transparenttextures.com/patterns/cream-dust.png");
+  font-size: x-large;
+  color: #FFFFF0;
+  padding: 1rem 3rem 1rem 3rem;
+  border-radius: 15px;
 }
 
 .nav__wrapper ul {
@@ -75,25 +99,6 @@ form {
   font-size: large;
 }
 
-.nav__left {
-  display: inherit;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.nav__left #__logo {
-  font-size: x-large;
-  background-color: #8b80f0;
-  padding: 2rem 5rem 2rem 5rem;
-}
-
-.nav__left__right {
-  -webkit-box-align: absolute-right;
-      -ms-flex-align: absolute-right;
-          align-items: absolute-right;
-}
-
 main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -108,7 +113,11 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-family: 'Nunito', sans serif;
+}
+
+img {
+  max-width: 30%;
+  height: auto;
 }
 
 body {
@@ -119,6 +128,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  font-family: 'Nunito', sans-serif;
+  background-image: img;
 }
+
 /*# sourceMappingURL=main.css.map */
