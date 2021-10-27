@@ -10,27 +10,54 @@ const router  = express.Router();
 
 module.exports = (db) => {
   /**
-   * ALL DATABASE QUERYING FUNCTIONS
-   */
-
-
-
-
-
-
-
-
-  /**
    * ALL EXPRESS SERVER API ROUTES
    */
 
-  router.get("/me", (req, res) => {
-    const user = req.session.user;
-    if (!user) {
-      return res.send({user: null});
-    }
-    return res.json(user);
+  router.get("/maps/points/:mapId", (req, res) => {
+    const mapId = req.params.mapId;
+    let query = `SELECT * FROM points WHERE map_id = $1`;
+    db.query(query, [mapId])
+      .then(data => {
+        const points = data.rows;
+        res.json({ points });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   });
+
+  router.get("/maps/favorites/:userId", (req, res) => {
+    const userId = req.params.userId;
+    let query = `SELECT * FROM maps JOIN favorites ON maps.id = map_id WHERE favorites.user_id = $1`;
+    db.query(query, [userId])
+      .then(data => {
+        const maps = data.rows;
+        res.json({ maps });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.get("/maps/:userId", (req, res) => {
+    const userId = req.params.userId;
+    let query = `SELECT * FROM maps JOIN contributions ON maps.id = map_id WHERE contributions.user_id = $1`;
+    db.query(query, [userId])
+      .then(data => {
+        const maps = data.rows;
+        res.json({ maps });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
 
   router.get("/maps", (req, res) => {
     let query = `SELECT * FROM maps LIMIT $1`;
@@ -44,6 +71,14 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
+  });
+
+  router.get("/currentUser", (req, res) => {
+    const user = req.session.user;
+    if (!user) {
+      return res.send({user: null});
+    }
+    return res.json(user);
   });
 
   return router;

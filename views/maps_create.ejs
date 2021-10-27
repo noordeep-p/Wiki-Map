@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('partials/_head') %>
+    <script src="/scripts/map_create.js"></script>
+    <title>Create Map</title>
+  </head>
+  <%- include('partials/_header') %>
+
+    <body>
+      <div id="map"></div>
+      <!-- Async script for google maps executes immediately after any DOM elements used in callback. -->
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.API_KEY%>&callback=initMap"></script>
+    </body>
+
+</html>
