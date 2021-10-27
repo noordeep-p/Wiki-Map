@@ -21,7 +21,7 @@ $(() => {
 
   const CreateMapListing = (mapData, userData) => {
     return $map = $(`
-    <article class="map-listing">
+    <article id="${mapData.id}" class="map-listing">
       <section class="map-listing__preview-image">
         <img src="${mapData.image_url}" alt="Map Preview Image">
       </section>
