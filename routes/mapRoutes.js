@@ -28,7 +28,7 @@ module.exports = (db) => {
   router.get("/create", (req, res) => {
     let user = req.session.user;
     if (user) {
-      return res.render("maps_create", { user });
+      return res.render("maps_create", user);
     }
     return res.render("maps_create", { user: null });
   });
