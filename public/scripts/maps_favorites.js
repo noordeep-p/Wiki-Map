@@ -4,11 +4,11 @@
 
 $(() => {
   // Make ajax request for maps data and use a promise chain to async pass data to CreateMapListing
-  // function and prepend returned listing to maps index
+  // function and prepend returned listing to maps favorites
 
   const addMapsToIndex = () => {
-    getAllMaps().then(mapData => {
-      getCurrentUser().then(userData => {
+    getCurrentUser().then(userData => {
+      favoriteMapsByUserId(userData.user.id).then(mapData=> {
         mapData.maps.forEach(map => {
           const $map = CreateMapListing(map, userData);
           $('.map-listings').prepend($map);
