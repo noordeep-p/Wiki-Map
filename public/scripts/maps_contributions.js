@@ -10,16 +10,23 @@ $(() => {
     getCurrentUser().then(userData => {
       contributedMapsByUserId(userData.user.id).then(mapData=> {
         mapData.maps.forEach(map => {
-          const $map = CreateMapListing(map, userData);
-          $('.map-listings').prepend($map);
+          pointsByMapId(map.id).then(pointData => {
+            const $map = CreateMapListing(map, userData, pointData);
+            $('.map-listings').prepend($map);
+          }).catch(e => console.log(e));
         });
       }).catch(e => console.log(e));
     }).catch(e => console.log(e));
   };
 
-  // Create function to make HTML markup of forms display
+  // function to make HTML markup of forms display
 
-  const CreateMapListing = (mapData, userData) => {
+  const CreateMapListing = (mapData, userData, pointData) => {
+    const titleArr = [];
+    pointData.points.forEach(point => {
+      titleArr.push(`<li>${point.title}</li>`);
+    });
+
     return $map = $(`
     <article id="${mapData.id}" class="map-listing">
       <section class="map-listing__preview-image">
@@ -29,9 +36,7 @@ $(() => {
         <h3 class="map-listing__title">${mapData.name}</h3>
         <ul class="map-listing__details">
           <lh>${mapData.description}</lh>
-          <li>PLACEHOLDER FOR ADDING MAP POINT TITLE</li>
-          <li>PLACEHOLDER FOR ADDING MAP POINT TITLE</li>
-          <li>PLACEHOLDER FOR ADDING MAP POINT TITLE</li>
+          ${titleArr.join('')}
         </ul>
         <footer class="map-listing__footer">
         ${userData.user ? `<button id="edit-map-${mapData.id}" class="edit-button">Edit</button>
