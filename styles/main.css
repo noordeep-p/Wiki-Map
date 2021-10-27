@@ -22,6 +22,8 @@ button {
   font-size: inherit;
   font-family: "Poppins", sans-serif;
 }
+
+
 /* figure out how to target the favorite button for styling
 #button .favorite-button{
   background-color: rgb(235, 102, 157);
