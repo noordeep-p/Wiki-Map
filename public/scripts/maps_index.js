@@ -8,7 +8,7 @@ $(() => {
 
   const addMapsToIndex = () => {
     getAllMaps().then(mapData => {
-      getMyDetails().then(userData => {
+      getCurrentUser().then(userData => {
         mapData.maps.forEach(map => {
           const $map = CreateMapListing(map, userData);
           $('.map-listings').prepend($map);

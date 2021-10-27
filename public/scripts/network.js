@@ -7,7 +7,7 @@ const getAllMaps = () => {
   });
 };
 
-const getMyDetails = () => {
+const getCurrentUser = () => {
   return $.ajax({
     url: "/api/currentUser"
   });
