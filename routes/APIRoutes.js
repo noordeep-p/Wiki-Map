@@ -13,6 +13,21 @@ module.exports = (db) => {
    * ALL EXPRESS SERVER API ROUTES
    */
 
+  router.get("/maps/points/:mapId", (req, res) => {
+    const mapId = req.params.mapId;
+    let query = `SELECT * FROM points WHERE map_id = $1`;
+    db.query(query, [mapId])
+      .then(data => {
+        const points = data.rows;
+        res.json({ points });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   router.get("/maps/favorites/:userId", (req, res) => {
     const userId = req.params.userId;
     let query = `SELECT * FROM maps JOIN favorites ON maps.id = map_id WHERE favorites.user_id = $1`;
