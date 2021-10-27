@@ -11,32 +11,37 @@ const router  = express.Router();
 module.exports = (db) => {
 
   /**
-   * ALL DATABASE QUERYING FUNCTIONS
-   */
-
-
-
-
-
-
-
-
-  /**
    * ALL EXPRESS SERVER MAP ROUTES
    */
+
+  router.get("/contributions", (req, res) => {
+    let user = req.session.user;
+    if (user) {
+      return res.render("maps_contributions", user);
+    }
+    return res.render("maps_index", { user: null });
+  });
+
+  router.get("/favorites", (req, res) => {
+    let user = req.session.user;
+    if (user) {
+      return res.render("maps_favorites", user);
+    }
+    return res.render("maps_index", { user: null });
+  });
 
   router.get("/create", (req, res) => {
     let user = req.session.user;
     if (user) {
       return res.render("maps_create", user);
     }
-    return res.render("maps_create", { user: null });
+    return res.render("maps_index", { user: null });
   });
 
   router.get("/", (req, res) => {
     let user = req.session.user;
     if (user) {
-      return res.render("maps_index", { user });
+      return res.render("maps_index", user);
     }
     return res.render("maps_index", { user: null });
   });
