@@ -4,8 +4,8 @@
 
       <% if(user) { %>
       <li><span>Logged In As: <%= user.name %>!</span></li>
-      <li><a href="/maps/contributions/<%=user.id%>">My Maps</a></li>
-      <li><a href="/maps/favorites/<%=user.id%>">My Favorites</a></li>
+      <li><a href="/maps/contributions">My Maps</a></li>
+      <li><a href="/maps/favorites">My Favorites</a></li>
       <li><a href="/maps/create">Create New Map</a></li>
       <form class="logout" method="POST" action="/logout">
         <button type="submit">Logout</button>
