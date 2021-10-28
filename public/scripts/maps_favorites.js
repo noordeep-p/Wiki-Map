@@ -6,6 +6,19 @@ $(() => {
   // Make ajax request for maps data and use a promise chain to async pass data to CreateMapListing
   // function and prepend returned listing to maps favorites
 
+  $(document).on('click', '.delete-button', function() {
+    const mapId = $(this).attr('id').substring(13);
+    getCurrentUser().then(userData => {
+      let userId = userData.user.id;
+      removeMapFromFavorites({mapId, userId}).then(res => {
+        if (res) {
+          $(this).closest('article').remove();
+          alert("Map Successfully Removed from Favorites!");
+        }
+      });
+    });
+  });
+
   const addMapsToIndex = () => {
     getCurrentUser().then(userData => {
       favoriteMapsByUserId(userData.user.id).then(mapData=> {
@@ -40,7 +53,7 @@ $(() => {
         </ul>
         <footer class="map-listing__footer">
         ${userData.user ? `<button id="edit-map-${mapData.id}" class="edit-button">Edit</button>
-          <button id="favorite-map-${mapData.id}" class="favorite-button">Favorite</button>` : ``}
+          <button id="favorite-map-${mapData.id}" class="delete-button">Remove</button>` : ``}
         </footer>
       </section>
     </article>
