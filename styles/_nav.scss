@@ -1,10 +1,9 @@
 // color variables
-$button-color: #56b391;
-$text-color1: #fffff0;
+// color variables
+$button-color: #35c590;
+$text-color1: 	#FFFFF0;
 $text-color2: black;
-$primary-color: rgb(139, 128, 240);
-$primary-color2: rgb(170, 161, 245);
-$bg-color: rgb(166, 192, 240);
+$bg-color: rgb(85, 179, 216);
 
 // font variables
 $logo-font: "Poppins", sans-serif;
@@ -13,8 +12,7 @@ $logo-font: "Poppins", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $primary-color;
-  background-image: url("https://www.transparenttextures.com/patterns/cream-dust.png");
+  background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
   font-size: x-large;
   color: $text-color1;
   padding: 1rem 3rem 1rem 3rem;
@@ -22,7 +20,6 @@ $logo-font: "Poppins", sans-serif;
   max-width: 60%;
   margin: 0 auto;
 }
-
 .nav__wrapper {
   ul {
     list-style: none;
@@ -38,3 +35,4 @@ $logo-font: "Poppins", sans-serif;
     }
   }
 }
+
