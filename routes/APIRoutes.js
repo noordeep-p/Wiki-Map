@@ -28,6 +28,39 @@ module.exports = (db) => {
       });
   });
 
+
+  router.delete("/maps/favorites", (req, res) => {
+    const { userId, mapId } = req.body;
+
+    let query = `DELETE FROM favorites WHERE user_id = $1 AND map_id = $2`;
+    db.query(query, [userId, mapId])
+      .then(data => {
+        const removedFavorite = data.rows;
+        res.json({ removedFavorite });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.post("/maps/favorites", (req, res) => {
+    const { userId, mapId } = req.body;
+
+    let query = `INSERT INTO favorites (user_id, map_id) VALUES ($1,$2) RETURNING *`;
+    db.query(query, [userId, mapId])
+      .then(data => {
+        const newFavorites = data.rows;
+        res.json({ newFavorites });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   router.get("/maps/favorites/:userId", (req, res) => {
     const userId = req.params.userId;
     let query = `SELECT * FROM maps JOIN favorites ON maps.id = map_id WHERE favorites.user_id = $1`;
