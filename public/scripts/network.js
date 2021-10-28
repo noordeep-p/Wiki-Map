@@ -30,3 +30,19 @@ const pointsByMapId = (mapId) => {
     url: `/api/maps/points/${mapId}`
   });
 };
+
+const addMapToFavorites = (data) => {
+  return $.ajax({
+    method: "POST",
+    url: `/api/maps/favorites`,
+    data
+  });
+};
+
+const removeMapFromFavorites = (data) => {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/maps/favorites`,
+    data
+  });
+};
