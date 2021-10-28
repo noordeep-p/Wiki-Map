@@ -1,6 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Nunito:wght@400&family=Poppins&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Poppins:wght@400&family=Poppins&display=swap");
-
-
 input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 20px;
@@ -23,19 +22,14 @@ button {
   font-family: "Poppins", sans-serif;
 }
 
-
-/* figure out how to target the favorite button for styling
-#button .favorite-button{
-  background-color: rgb(235, 102, 157);
- } */
-
-
 button:hover {
   opacity: 0.8;
 }
 
 .container {
   padding: 25px;
+  height: 30em;
+  width: 60em;
 }
 
 .register {
@@ -75,7 +69,7 @@ form {
   background-color: #8b80f0;
   background-image: url("https://www.transparenttextures.com/patterns/cream-dust.png");
   font-size: x-large;
-  color: #FFFFF0;
+  color: #fffff0;
   padding: 1rem 3rem 1rem 3rem;
   border-radius: 15px;
 }
@@ -115,6 +109,7 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  font-family: 'Nunito', sans serif;
 }
 
 img {
@@ -130,7 +125,34 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-image: img;
+  font-family: "Poppins", sans-serif;
 }
 
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+.favorite-button {
+  background-color: #eb669d;
+  font-family: "Poppins", sans-serif;
+}
+
+.map-listings {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.map-listings .map-listing {
+  display: inherit;
+}
+
+.map-listings .map-listing__preview-image {
+  padding-right: 5em;
+}
 /*# sourceMappingURL=main.css.map */
