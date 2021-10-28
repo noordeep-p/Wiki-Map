@@ -40,7 +40,8 @@ $(() => {
         </ul>
         <footer class="map-listing__footer">
         ${userData.user ? `<button id="edit-map-${mapData.id}" class="edit-button">Edit</button>
-          <button id="favorite-map-${mapData.id}" class="favorite-button">Favorite</button>` : ``}
+          <button id="favorite-map-${mapData.id}" class="favorite-button">
+          <i class="fas fa-heart"></i></button>` : ``}
         </footer>
       </section>
     </article>
