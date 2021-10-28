@@ -24,3 +24,38 @@ body {
   height: 400px;
   width: 100%;
 }
+
+.favorite-button {
+  background-color: rgb(235, 102, 157);
+  font-family: $logo-font;
+ }
+
+.map-listings{
+  display:flex;
+  flex-direction: column;
+
+  .map-listing{
+    display: inherit;
+  }
+
+  .map-listing__details {
+    font-size: larger;
+    h3 {
+      text-align: center;
+    }
+    
+  }
+
+  .map-listing__preview-image {
+    img{
+      max-width: 60%;
+      height: auto;
+    }
+
+  }
+
+  .map-listing__footer {
+    font-size: small;
+    text-align: center;
+  }
+}
