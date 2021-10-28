@@ -11,7 +11,7 @@ $logo-font: "Poppins", sans-serif;
 
 .nav__main {
   display: flex;
-  flex-wrap: inherit;
+  align-items: center;
   justify-content: center;
   background-color: $primary-color;
   background-image: url("https://www.transparenttextures.com/patterns/cream-dust.png");
@@ -19,6 +19,8 @@ $logo-font: "Poppins", sans-serif;
   color: $text-color1;
   padding: 1rem 3rem 1rem 3rem;
   border-radius: 15px;
+  max-width: 60%;
+  margin: 0 auto;
 }
 
 .nav__wrapper {
