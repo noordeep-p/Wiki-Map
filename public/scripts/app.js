@@ -19,4 +19,13 @@ $(() => {
     let url = `http://localhost:8080/maps/display/${mapId}`;
     $(location).attr('href',url);
   });
+
+  $(document).on('click', '.point-delete-button', function() {
+    const pointId = $(this).attr('id').substring(6);
+    removePointFromMap({ pointId }).then(res => {
+      if (res) {
+        location.reload();
+      }
+    });
+  });
 });
