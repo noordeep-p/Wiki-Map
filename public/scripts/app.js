@@ -13,4 +13,17 @@ $(() => {
       });
     });
   });
+
+  $(document).on('click', '.edit-button', function() {
+    const mapId = $(this).attr('id').substring(9);
+    getCurrentUser().then(userData => {
+      let userId = userData.user.id;
+      addMapToFavorites({mapId, userId}).then(res => {
+        if (res) {
+          console.log('map load successful');
+        }
+      });
+    });
+  });
+
 });
