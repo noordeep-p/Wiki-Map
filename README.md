@@ -9,7 +9,10 @@ Mapsy is a a multi-page app that allows users to create and curate a list geogra
 ## Demo
 ---
 
+<p align="center">
+
 [! Mapsy in action](https://user-images.githubusercontent.com/84409001/139512360-55627278-b390-4d31-b09c-76521800f982.mp4)
+</p>
 
 
 ## Dependencies
