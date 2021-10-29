@@ -15,7 +15,7 @@ module.exports = (db) => {
    */
 
   router.get("/display/:mapId", (req, res) => {
-    let user = req.session.user;
+    let { user } = req.session.user;
     let mapId = req.params.mapId;
     if (user) {
       return res.render("map_edit", {mapId, user});
