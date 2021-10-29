@@ -50,7 +50,7 @@ const removeMapFromFavorites = (data) => {
 const addPointToMap = (data) => {
   return $.ajax({
     method: "POST",
-    url: `/api/maps/marker`,
+    url: `/api/maps/points`,
     data
   });
 };
@@ -58,7 +58,7 @@ const addPointToMap = (data) => {
 const removePointFromMap = (data) => {
   return $.ajax({
     method: "DELETE",
-    url: `/api/maps/marker`,
+    url: `/api/maps/points`,
     data
   });
 };
