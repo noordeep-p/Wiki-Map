@@ -6,6 +6,12 @@ Mapsy is a a multi-page app that allows users to create and curate a list geogra
 ---
 [Noordeep Punjabi](https://github.com/noordeep-p)  | [Rhea Azarraga](https://github.com/Rheaazarraga)
 
+## Demo
+---
+
+
+
+
 ## Dependencies
 ---
 * node: ^10.x,
@@ -28,8 +34,6 @@ Mapsy is a a multi-page app that allows users to create and curate a list geogra
 
 ***This app requires Google Maps and Places API keys. The current keys in the project are restricted and will not work on other hosts.***
 
-
-## Demo
 ---
 
 ## Getting Started
