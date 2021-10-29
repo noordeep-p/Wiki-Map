@@ -31,12 +31,13 @@ module.exports = (db) => {
   });
 
   router.delete("/maps/points", (req, res) => {
-    const mapId = req.params.mapId;
-    let query = `SELECT * FROM points WHERE map_id = $1`;
-    db.query(query, [mapId])
+    const pointId = Number(req.body.pointId);
+    console.log(pointId);
+    let query = `DELETE FROM points WHERE points.id = $1`;
+    db.query(query, [pointId])
       .then(data => {
-        const points = data.rows;
-        res.json({ points });
+        const removedPoint = data.rows;
+        res.json({ removedPoint });
       })
       .catch(err => {
         res
