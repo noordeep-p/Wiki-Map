@@ -39,7 +39,7 @@ $(() => {
           ${titleArr.join('')}
         </ul>
         <footer class="map-listing__footer">
-        ${userData.user ? `<button id="edit-map-${mapData.id}" class="edit-button">Edit</button>
+        ${userData.user ? `<button id="edit-map-${mapData.id}" class="edit-button">Edit / Show</button>
           <button id="favorite-map-${mapData.id}" class="favorite-button">Favorite</button>` : ``}
         </footer>
       </section>
