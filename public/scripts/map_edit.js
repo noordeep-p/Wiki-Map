@@ -38,6 +38,23 @@ function geolocation() {
   }
 }
 
+// set search bounds for new map
+function setSearchBounds() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      let geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      let circle = new google.maps.Circle({
+        center: geolocation,
+        radius: position.coords.accuracy
+      });
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
+
 // initialize map options and map
 function initMap() {
   let mapOptions = {
@@ -98,8 +115,13 @@ function initAutocomplete() {
       let lng = place.geometry.location.lng();
       let name = place.name;
       let address = place.formatted_address;
-      const pointData = { description, imageURL, lat, lng, name, address};
-      console.log(pointData);
+      let mapId = $('.current-mapId').attr('id').substring(14);
+      const pointData = { mapId, description, imageURL, lat, lng, name, address };
+      addPointToMap(pointData).then(res => {
+        if (res) {
+          location.reload();
+        }
+      }).catch(e => console.log(e));
     });
 
     // center map to user search result pin and add pin
@@ -134,4 +156,4 @@ function initAutocomplete() {
   autocomplete.addListener('place_changed', fillInAddress);
 }
 
-geolocation();
+setSearchBounds();
