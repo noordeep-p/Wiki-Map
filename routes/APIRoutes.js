@@ -13,6 +13,38 @@ module.exports = (db) => {
    * ALL EXPRESS SERVER API ROUTES
    */
 
+  router.post("/maps/points", (req, res) => {
+    let userInfo = req.session.user;
+    let userId = userInfo.user.id;
+    const { mapId, description, imageURL, lat, lng, name, address } = req.body;
+    let query = `INSERT INTO points (user_id, map_id, title, description, image_url, address, latitude, longitude) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`;
+    db.query(query, [userId ,mapId, name, description, imageURL, address, lat, lng])
+      .then(data => {
+        const points = data.rows;
+        res.json({ points });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.delete("/maps/points", (req, res) => {
+    const mapId = req.params.mapId;
+    let query = `SELECT * FROM points WHERE map_id = $1`;
+    db.query(query, [mapId])
+      .then(data => {
+        const points = data.rows;
+        res.json({ points });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   router.get("/maps/points/:mapId", (req, res) => {
     const mapId = req.params.mapId;
     let query = `SELECT * FROM points WHERE map_id = $1`;
