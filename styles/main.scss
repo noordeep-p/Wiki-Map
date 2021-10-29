@@ -70,3 +70,24 @@ body {
     margin: auto;
   }
 }
+
+
+#points-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#point-img {
+  margin-top: 1em;
+  border-radius: 1em;
+  width: 650px;
+  height: 400px;
+}
+
+.point-delete-button {
+  margin: 1em;
+  margin-top: -0.5em;
+  background-color: rgb(235, 102, 157);
+}
