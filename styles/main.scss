@@ -26,6 +26,7 @@ body {
 .favorite-button, .remove-button {
   background-color: rgb(235, 102, 157);
   font-family: $logo-font;
+  margin: 10px;
 }
 
 .map-listings {
@@ -34,10 +35,15 @@ body {
 
   .map-listing {
     display: inherit;
+    border-radius: 25px;
+    margin: 15px;
   }
 
   .map-listing__details {
     font-size: larger;
+    li {
+      padding-top: 10px;
+    }
     h3 {
       text-align: center;
     }
@@ -45,12 +51,18 @@ body {
 
   .map-listing__preview-image {
     img {
-      max-width: 60%;
+      max-width: 500px;
       height: auto;
+      border-radius: 25px;
     }
   }
 
   .map-listing__footer {
+    height: 50px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: small;
     text-align: center;
   }
