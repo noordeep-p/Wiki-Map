@@ -48,6 +48,10 @@ function initMap() {
   // get all markers from backed server and add then to the map
   const addPointsByMapId = (mapId) => {
     pointsByMapId(mapId).then(pointData => {
+      // if no points are returned then switch user view to their geolocation
+      if (!pointData.points) {
+        geolocation();
+      }
       pointData.points.forEach(point => {
         // add point
         let marker = new
@@ -55,6 +59,9 @@ function initMap() {
           position: {lat: parseFloat(point.latitude), lng: parseFloat(point.longitude)},
           map: map
         });
+        // recenter map over latest point
+        map.setCenter({lat: parseFloat(point.latitude), lng: parseFloat(point.longitude)});
+        map.setZoom(11);
         // add point pop window with HTML markup
         let infoWindow = new google.maps.InfoWindow(
           {content: `<h1>${point.title}</h2>
@@ -68,7 +75,9 @@ function initMap() {
       });
     });
   };
-  addPointsByMapId(1);
+  // get current mapId to get points
+  const mapId = $('.current-mapId').attr('id').substring(14);
+  addPointsByMapId(mapId);
 }
 
 
