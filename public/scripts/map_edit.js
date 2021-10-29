@@ -104,7 +104,7 @@ function initMap() {
   const addPointsByMapId = (mapId) => {
     pointsByMapId(mapId).then(pointData => {
       // if no points are returned then switch user view to their geolocation
-      if (!pointData.points) {
+      if (!pointData.points.point) {
         geolocation();
       }
       pointData.points.forEach(point => {
