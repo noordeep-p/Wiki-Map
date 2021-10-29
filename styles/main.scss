@@ -23,7 +23,7 @@ body {
   width: 100%;
 }
 
-.favorite-button, .remove-button {
+.favorite-button, .delete-button {
   background-color: rgb(235, 102, 157);
   font-family: $logo-font;
   margin: 10px;
@@ -37,6 +37,8 @@ body {
     display: inherit;
     border-radius: 25px;
     margin: 15px;
+
+
   }
 
   .map-listing__details {
@@ -65,5 +67,6 @@ body {
     justify-content: center;
     font-size: small;
     text-align: center;
+    margin: auto;
   }
 }
