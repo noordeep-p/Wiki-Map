@@ -13,7 +13,28 @@
 
     <body>
       <div id="map"></div>
-      <input id="autocomplete" type="text" size="50" placeholder="Search for a point to add">
+
+      <h3>Search Points</h3>
+      <input id="autocomplete" type="text" size="100" placeholder="Search for a point to add">
+
+        <div id="pin-parameters">
+          <h3>Complete details & click <em>Pin It</em> to add marker</h3>
+          <hr />
+
+          <label for="description"><b>Description</b></label>
+          <input type="text" placeholder="Add Description for your Marker 🙂" id="pin-description" required />
+
+          <label for="image"><b>Image URL</b></label>
+          <input type="text" placeholder="Enter Image URL 📸" id="pin-image" required />
+
+          <div class="clearfix">
+            <button id="pin-it-button">
+              <strong>Pin It</strong>
+            </button>
+          </div>
+
+        </div>
+
       <!-- Async script for google maps executes immediately after any DOM elements used in callback. -->
       <script async
       src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.API_KEY%>&libraries=places&callback=initialize">
