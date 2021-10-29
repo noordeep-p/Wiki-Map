@@ -2,6 +2,10 @@
 /* eslint-disable func-style */
 /* eslint-disable no-undef */
 
+// hide pin info box on load
+$(() => {
+  $('#pin-parameters').slideUp();
+});
 
 //Initialize callbacks for google maps api scripts
 function initialize() {
@@ -9,13 +13,15 @@ function initialize() {
   initAutocomplete();
 }
 
-let map, marker, geolocation;
+// initialize map variables
+let map, marker;
 
-
-function geolocate() {
+// geo locate user based using the build in browser geolocation, set search bounds
+// and map center to geolocation after map is initialized
+function geolocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      geolocation = {
+      let geolocation = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
@@ -24,19 +30,19 @@ function geolocate() {
         radius: position.coords.accuracy
       });
       autocomplete.setBounds(circle.getBounds());
-      map.setBounds(circle.getBounds());
+      map.setCenter(geolocation);
     });
+  } else {
+    // set default geolocation to toronto if navigator geolocation is not present
+    map.setCenter({lat:43.6542651,lng:-79.7503345});
   }
 }
 
+// initialize map options and map
 function initMap() {
-  console.log(geolocate());
   let mapOptions = {
-    center: {lat:43.6542651,lng:-79.7503345},
     zoom: 10,
   };
-
-  // set map variable to new google map object
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
   // get all markers from backed server and add then to the map
@@ -49,25 +55,20 @@ function initMap() {
           position: {lat: parseFloat(point.latitude), lng: parseFloat(point.longitude)},
           map: map
         });
-
         // add point pop window with HTML markup
         let infoWindow = new google.maps.InfoWindow(
           {content: `<h1>${point.title}</h2>
           <p>${point.description}</p>
           <img src="${point.image_url}" alt= "Place Image" width="250" height="250">`,
           });
-
         // add click listener to point to display popup when clicked
         marker.addListener('click', function() {
           infoWindow.open(map, marker);
-
         });
       });
     });
   };
-
   addPointsByMapId(1);
-
 }
 
 
@@ -75,13 +76,29 @@ function initMap() {
 function initAutocomplete() {
 
   function fillInAddress() {
-    // Get the place details from form input & send it to the backend server/ add pin to current map
+    $('#pin-parameters').slideDown("slow");
+
+    // Get the place details from google autocomplete API
     let place = autocomplete.getPlace();
+
+    // Get all place values on pin it button click and post values to server
+    $("#pin-it-button").click(function() {
+      let description = $("#pin-description").val();
+      let imageURL = $("#pin-image").val();
+      let lat = place.geometry.location.lat();
+      let lng = place.geometry.location.lng();
+      let name = place.name;
+      let address = place.formatted_address;
+      const pointData = { description, imageURL, lat, lng, name, address};
+      console.log(pointData);
+    });
+
+    // center map to user search result pin and add pin
     if (place.geometry.viewport) {
       map.fitBounds(place.geometry.viewport);
     } else {
       map.setCenter(place.geometry.location);
-      map.setZoom(17); // Why 17? Because it looks good.
+      map.setZoom(17);
     }
     if (!marker) {
       marker = new google.maps.Marker({
@@ -100,7 +117,7 @@ function initAutocomplete() {
   autocomplete = new google.maps.places.Autocomplete(
     /** @type {!HTMLInputElement} */
     (document.getElementById('autocomplete')), {
-      types: ['geocode']
+      types: ['establishment']
     });
 
   // When the user selects an address from the dropdown, populate the address
@@ -108,6 +125,4 @@ function initAutocomplete() {
   autocomplete.addListener('place_changed', fillInAddress);
 }
 
-
-
-geolocate();
+geolocation();
