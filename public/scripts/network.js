@@ -46,3 +46,19 @@ const removeMapFromFavorites = (data) => {
     data
   });
 };
+
+const addPointToMap = (data) => {
+  return $.ajax({
+    method: "POST",
+    url: `/api/maps/marker`,
+    data
+  });
+};
+
+const removePointFromMap = (data) => {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/maps/marker`,
+    data
+  });
+};
