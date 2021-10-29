@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <%- include('partials/_head') %>
+    <title>Register</title>
+  </head>
+
+  <body>
+
+    <%- include('partials/_header') %>
+    <main>
+      <form action="/maps/create" method="post">
+        <div class="container">
+          <h1>Create a New Map</h1>
+          <p>Please fill in the fields below</p>
+          <hr />
+
+          <label for="name"><b>Name</b></label>
+          <input type="text" placeholder="Enter Map Name" name="name" required />
+
+          <label for="Description"><b>Enter Map Description</b></label>
+          <input type="text" placeholder="Describe Your Map to Other Users" name="description" required />
+
+          <label for="password"><b>Please Provide a Display Image</b></label>
+          <input
+            type="text"
+            placeholder="Please Provide a Display Image URL 📸"
+            name="image"
+            required
+          />
+
+          <div class="clearfix">
+            <button type="submit" class="signupbtn">
+              <strong>Create Map</strong>
+            </button>
+          </div>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

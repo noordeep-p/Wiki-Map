@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <%- include('partials/_head') %>
-    <script src="/scripts/map_create.js"></script>
+    <script src="/scripts/map_edit.js"></script>
     <title>Create Map</title>
   </head>
   <%- include('partials/_header') %>
 
-    <body>
+    <body id="current-mapId-<%=mapId%>" class="current-mapId">
       <div id="map"></div>
 
-      <h3>Search Points</h3>
+      <h3>Search/ Add Points</h3>
       <input id="autocomplete" type="text" size="100" placeholder="Search for a point to add">
 
         <div id="pin-parameters">
