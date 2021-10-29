@@ -5,6 +5,44 @@
 // hide pin info box on load
 $(() => {
   $('#pin-parameters').slideUp();
+  // Make ajax request for maps data and use a promise chain to async pass data to CreateMapListing
+  // function and prepend returned listing to maps contributions
+  const mapId = $('.current-mapId').attr('id').substring(14);
+
+  const addPointsToPage = (mapId) => {
+
+    pointsByMapId(mapId).then(pointData => {
+      pointData.points.forEach(point => {
+        $point = CreatePointListings(point);
+        $('#points-list').prepend($point);
+      });
+    }).catch(e => console.log(e));
+
+
+    // function to make HTML markup of forms display
+
+    const CreatePointListings = (point) => {
+      return $point = $(`
+    <article id="${point.id}" class="point-listing">
+      <section class="map-listing__preview-image">
+        <img src="${point.image_url}" alt="Map Preview Image" id="point-img">
+      </section>
+      <section class="map-listing__details">
+        <h3 class="map-listing__title">${point.title}</h3>
+        <ul class="map-listing__details">
+          <lh>${point.description}</lh>
+          <li>${point.address}</li>
+        </ul>
+        <footer class="map-listing__footer">
+        <button id="point-${point.id}" class="point-delete-button">Remove</button>
+        </footer>
+      </section>
+    </article>
+    `);
+    };
+  };
+
+  addPointsToPage(mapId);
 });
 
 //Initialize callbacks for google maps api scripts
