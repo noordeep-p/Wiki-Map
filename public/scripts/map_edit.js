@@ -157,7 +157,8 @@ function initAutocomplete() {
       const pointData = { mapId, description, imageURL, lat, lng, name, address };
       addPointToMap(pointData).then(res => {
         if (res) {
-          location.reload();
+          let url = `http://localhost:8080/maps/display/${mapId}`;
+          $(location).attr('href',url);
         }
       }).catch(e => console.log(e));
     });
