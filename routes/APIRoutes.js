@@ -18,10 +18,15 @@ module.exports = (db) => {
     let userId = userInfo.user.id;
     const { mapId, description, imageURL, lat, lng, name, address } = req.body;
     let query = `INSERT INTO points (user_id, map_id, title, description, image_url, address, latitude, longitude) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`;
+    let myMapsQuery = `INSERT INTO contributions (user_id, map_id) VALUES ($1,$2) ON CONFLICT DO NOTHING`;
     db.query(query, [userId ,mapId, name, description, imageURL, address, lat, lng])
       .then(data => {
-        const points = data.rows;
-        res.json({ points });
+        db.query(myMapsQuery, [userId, mapId]).then(response => {
+          if (response) {
+            const points = data.rows;
+            res.json({ points });
+          }
+        }).catch(e => console.log(e));
       })
       .catch(err => {
         res
