@@ -56,7 +56,7 @@ module.exports = (db) => {
       return db.query(query, [userId,name,description,image])
         .then(data => {
           if (data) {
-            let user = userInfo;
+            let user = userInfo.user;
             let mapId = data.rows[0].id;
             return res.render("map_edit", { user, mapId });
           }
