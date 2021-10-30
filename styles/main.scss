@@ -43,11 +43,15 @@ body {
 
   .map-listing__details {
     font-size: larger;
+    justify-content: center;
     li {
       padding-top: 10px;
     }
     h3 {
+      display: flex;
       text-align: center;
+      justify-content: center;
+      align-content: center;
     }
   }
 
